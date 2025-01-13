@@ -1,0 +1,16 @@
+{
+  "name": "es45b_projeto_2",
+  "version": "1.0.0",
+  "description": "projeto final da disciplina de web 2",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon App.js"
+  },
+  "author": "Anderson Felipe de Barros Dias",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2",
+    "nodemon": "^3.1.9"
+  }
+}
