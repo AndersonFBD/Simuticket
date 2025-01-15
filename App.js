@@ -3,6 +3,8 @@ const port = 3000;
 
 const app = Express();
 
+app.use(require("./config/dbConnect"));
+
 app.get("/", (req, res) => {
   res.end("pagina inicial do projeto 2");
 });
