@@ -40,4 +40,7 @@ module.exports = {
   getTicket: async (id) => {
     return await TicketModel.findById(id);
   },
+  getTicketsOfCustomer: async (customer) => {
+    return TicketModel.find({ customerID: customer });
+  },
 };
