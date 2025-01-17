@@ -35,7 +35,10 @@ module.exports = {
   delete: async (id) => {
     return await UserModel.findByIdAndDelete(id);
   },
-  getUser: async (id) => {
+  getUserbyId: async (id) => {
     return await UserModel.findById(id);
+  },
+  getUserbyName: async (username) => {
+    return await UserModel.findOne({ username: username });
   },
 };
