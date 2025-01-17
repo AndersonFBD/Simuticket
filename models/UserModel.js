@@ -22,23 +22,10 @@ module.exports = {
     await newUser.save();
     return newUser;
   },
-  update: async (id, editedUser) => {
-    let foundUser = await UserModel.findById(id);
-    if (!foundUser) return false;
-
-    Object.keys(editedUser).forEach(
-      (key) => (foundUser[key] = editedUser[key])
-    );
-    await foundUser.save();
-    return foundUser;
-  },
-  delete: async (id) => {
-    return await UserModel.findByIdAndDelete(id);
-  },
   getUserbyId: async (id) => {
     return await UserModel.findById(id);
   },
   getUserbyName: async (username) => {
-    return await UserModel.findOne({ username: username });
+    return await UserModel.find({ username: username });
   },
 };
