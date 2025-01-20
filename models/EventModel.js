@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 
 const EventSchema = new mongoose.Schema({
   EventName: String,
-  TotalSeat: Number,
-  AvailableSeat: Number,
+  EventDescription: String,
+  EventAddress: String,
   EventDate: Date,
 });
 
@@ -14,11 +14,11 @@ module.exports = {
     const EventList = await EventModel.find({});
     return EventList;
   },
-  save: async (EventName, TotalSeat, AvailableSeat, EventDate) => {
+  save: async (EventName, EventDescription, EventAddress, EventDate) => {
     const newEvent = new TicketModel({
       EventName: EventName,
-      TotalSeat: TotalSeat,
-      AvailableSeat: AvailableSeat,
+      EventDescription: EventDescription,
+      EventAddress: EventAddress,
       EventDate: EventDate,
     });
     await newEvent.save();
@@ -37,7 +37,7 @@ module.exports = {
   delete: async (id) => {
     return await EventModel.findByIdAndDelete(id);
   },
-  getTicket: async (id) => {
+  getEventById: async (id) => {
     return await EventModel.findById(id);
   },
 };
