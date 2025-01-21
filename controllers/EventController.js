@@ -48,7 +48,7 @@ exports.listEvents = async (req, res) => {
 exports.updateEvent = async (req, res) => {
   try {
     let eventId = req.params.id;
-    let alteredEvent = req.body.event;
+    let alteredEvent = req.body;
     let updatedEvent = await eModel.update(eventId, alteredEvent);
     return res.status(200).json({ message: "evento atualizado", updatedEvent });
   } catch (error) {
@@ -66,11 +66,9 @@ exports.deleteEvent = async (req, res) => {
     return res.status(200).json({ message: "evento removido", deletedEvent });
   } catch (error) {
     console.error(error);
-    return res
-      .status(500)
-      .json({
-        message: "houve um erro na remoção do evento",
-        error: error.message,
-      });
+    return res.status(500).json({
+      message: "houve um erro na remoção do evento",
+      error: error.message,
+    });
   }
 };

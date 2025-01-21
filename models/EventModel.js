@@ -15,7 +15,7 @@ module.exports = {
     return EventList;
   },
   save: async (EventName, EventDescription, EventAddress, EventDate) => {
-    const newEvent = new TicketModel({
+    const newEvent = new EventModel({
       EventName: EventName,
       EventDescription: EventDescription,
       EventAddress: EventAddress,
@@ -26,8 +26,9 @@ module.exports = {
   },
   update: async (id, editedEvent) => {
     let foundEvent = await EventModel.findById(id);
+    console.log(foundEvent);
     if (!foundEvent) return false;
-
+    console.log(editedEvent);
     Object.keys(editedEvent).forEach(
       (key) => (foundEvent[key] = editedEvent[key])
     );
