@@ -14,7 +14,7 @@ exports.listAll = async (req, res) => {
 };
 
 exports.getAllFromUser = async (req, res) => {
-  const user = req.params.user;
+  const user = req.params.userID;
 
   try {
     let userTickets = await Tmodel.getTicketsOfCustomer(user);
@@ -22,6 +22,35 @@ exports.getAllFromUser = async (req, res) => {
   } catch (err) {
     return res.status(500).json({
       message: "houve um erro na busca dos tickets",
+      error: err.message,
+    });
+  }
+};
+
+exports.getAllFromEvent = async (req, res) => {
+  const eventID = req.params.eventID;
+  try {
+    let eventTickets = await Tmodel.getTicketsFromEvent(eventID);
+    return res.status(200).json(eventTickets);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({
+      message: "houve um erro na recuperação dos bilhetes",
+      error: error.message,
+    });
+  }
+};
+
+exports.getTicket = async (req, res) => {
+  try {
+    const ticket = await Tmodel.getTicket(req.params.id);
+    if (!ticket) {
+      return res.status(404).json({ message: "bilhete não encontrado" });
+    }
+    return res.status(200).json(ticket);
+  } catch (err) {
+    return res.status(500).json({
+      message: "houve um erro na busca do ticket",
       error: err.message,
     });
   }

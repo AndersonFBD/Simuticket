@@ -42,4 +42,7 @@ module.exports = {
   getTicketsOfCustomer: async (customer) => {
     return TicketModel.find({ customerID: customer });
   },
+  getTicketsFromEvent: async (event) => {
+    return TicketModel.find({ EventID: event });
+  },
 };

@@ -6,6 +6,7 @@ const app = Express();
 //importação de rotas
 const userRoutes = require("./routes/UserRoutes");
 const eventRoutes = require("./routes/EventRoutes");
+const ticketRoutes = require("./routes/TicketRoutes");
 
 //utilitários
 app.use(require("./config/dbConnect"));
@@ -19,6 +20,7 @@ app.get("/", (req, res) => {
 //invocação das rotas
 app.use("/users", userRoutes);
 app.use("/events", eventRoutes);
+app.use("/tickets", ticketRoutes);
 
 app.listen(port, () => {
   console.log("listening on port: " + port);
