@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const TicketSchema = new mongoose.Schema({
   eventID: String,
   customerID: String,
-  Available: Number,
   price: Number,
 });
 
@@ -14,10 +13,10 @@ module.exports = {
     const TicketList = await TicketModel.find({});
     return TicketList;
   },
-  save: async (eventID, Available, price) => {
+  save: async (eventID, CustomerID, price) => {
     const newTicket = new TicketModel({
       eventID: eventID,
-      Available: Available,
+      customerID: CustomerID,
       price: price,
     });
     await newTicket.save();
