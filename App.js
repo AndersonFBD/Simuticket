@@ -1,6 +1,6 @@
 const Express = require("express");
+const cookieParser = require("cookie-parser");
 const port = 3000;
-
 const app = Express();
 
 //importação de rotas
@@ -10,6 +10,7 @@ const ticketRoutes = require("./routes/TicketRoutes");
 
 //utilitários
 app.use(require("./config/dbConnect"));
+app.use(cookieParser());
 app.use(Express.json());
 app.use(Express.urlencoded({ extended: true }));
 

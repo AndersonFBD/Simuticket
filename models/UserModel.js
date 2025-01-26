@@ -28,4 +28,7 @@ module.exports = {
   getUserbyName: async (username) => {
     return await UserModel.find({ username: username });
   },
+  locateUser: async (username, password) => {
+    return await UserModel.findOne({ username: username, password: password });
+  },
 };
