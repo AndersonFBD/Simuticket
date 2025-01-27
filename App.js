@@ -7,6 +7,7 @@ const app = Express();
 const userRoutes = require("./routes/UserRoutes");
 const eventRoutes = require("./routes/EventRoutes");
 const ticketRoutes = require("./routes/TicketRoutes");
+const authRoutes = require("./routes/AuthRoutes");
 
 //utilitários
 app.use(require("./config/dbConnect"));
@@ -19,6 +20,7 @@ app.get("/", (req, res) => {
 });
 
 //invocação das rotas
+app.use("/auth", authRoutes);
 app.use("/users", userRoutes);
 app.use("/events", eventRoutes);
 app.use("/tickets", ticketRoutes);

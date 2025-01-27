@@ -6,7 +6,7 @@ exports.login = async (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
   const savedUser = await uModel.locateUser(username, password);
-
+  console.log(savedUser);
   if (!savedUser) {
     return res.status(400).json({ message: "credenciais incorretas" });
   }
@@ -17,8 +17,9 @@ exports.login = async (req, res) => {
       name: savedUser.username,
       admin: savedUser.admin,
     };
-    const token = jwt.sign(payload, process.env.SECRET, {
-      expiresIn: process.env.TOKEN_EXPIRATION,
+    console.log(process.env.SECRET);
+    const token = jwt.sign(payload, String(process.env.SECRET), {
+      expiresIn: String(process.env.EXPIRY),
     });
 
     console.log(token);
@@ -27,6 +28,7 @@ exports.login = async (req, res) => {
 
     return res.status(200).json({ message: "login bem sucedido" });
   } catch (error) {
+    console.error(error);
     return res
       .status(500)
       .json({ message: "erro na autenticação", error: error.message });
