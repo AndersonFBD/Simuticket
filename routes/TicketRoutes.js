@@ -1,9 +1,10 @@
 const Express = require("express");
 const router = Express.Router();
+const { verifyCredentials } = require("../middleware/verifyCredentials");
 
 const TControl = require("../controllers/TicketController");
 
-router.get("/allTickets", TControl.listAll);
+router.get("/allTickets", verifyCredentials, TControl.listAll);
 router.get("/byUser/:userID", TControl.getAllFromUser);
 router.get("/byEvent/:eventID", TControl.getAllFromEvent);
 router.get("/:id", TControl.getTicket);

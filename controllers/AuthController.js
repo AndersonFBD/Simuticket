@@ -27,9 +27,14 @@ exports.login = async (req, res) => {
 
     console.log(token);
 
-    res.cookie("session", token);
+    res.cookie("session", token, { httpOnly: true });
 
-    return res.status(200).json({ message: "login bem sucedido" });
+    return (
+      res
+        .status(200)
+        // .json({ message: "login bem sucedido" })
+        .redirect("/")
+    );
   } catch (error) {
     console.error(error);
     return res
