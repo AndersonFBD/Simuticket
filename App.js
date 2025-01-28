@@ -1,5 +1,7 @@
 const Express = require("express");
 const cookieParser = require("cookie-parser");
+const { engine } = require("express-handlebars");
+const path = require("path");
 const port = 3000;
 const app = Express();
 
@@ -10,6 +12,9 @@ const ticketRoutes = require("./routes/TicketRoutes");
 const authRoutes = require("./routes/AuthRoutes");
 
 //utilitários
+app.engine("hbs", engine({ extname: ".hbs", defaultLayout: false }));
+app.set("view engine", "hbs");
+app.set("views", path.join(__dirname, "views"));
 app.use(require("./config/dbConnect"));
 app.use(cookieParser());
 app.use(Express.json());

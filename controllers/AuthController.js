@@ -8,7 +8,10 @@ exports.login = async (req, res) => {
   const savedUser = await uModel.locateUser(username, password);
   console.log(savedUser);
   if (!savedUser) {
-    return res.status(400).json({ message: "credenciais incorretas" });
+    return res
+      .status(400)
+      .json({ message: "credenciais incorretas" })
+      .send("ERRO");
   }
 
   try {
