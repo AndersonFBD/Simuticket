@@ -48,7 +48,12 @@ exports.login = async (req, res) => {
 exports.logout = async (req, res) => {
   try {
     await res.clearCookie("session");
-    return res.status(200).json({ message: "deslogado com sucesso" });
+    return (
+      res
+        .status(200)
+        // .json({ message: "deslogado com sucesso" })
+        .redirect("/")
+    );
   } catch (error) {
     return res.status(500).json({
       message: "houve um erro no encerramento da sessão",

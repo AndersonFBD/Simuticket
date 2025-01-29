@@ -7,6 +7,6 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 router.post("/login", aController.login);
-router.get("/logout", aController.logout);
+router.post("/logout", aController.logout);
 
 module.exports = router;

@@ -1,7 +1,9 @@
 const Express = require("express");
 const cookieParser = require("cookie-parser");
+require("dotenv").config();
 const { engine } = require("express-handlebars");
 const path = require("path");
+const jwt = require("jsonwebtoken");
 const port = 3000;
 const app = Express();
 
@@ -21,7 +23,14 @@ app.use(Express.json());
 app.use(Express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
-  res.end("pagina inicial do projeto 2");
+  if (req.cookies.session) {
+    try {
+      let data = jwt.verify(req.cookies.session, String(process.env.SECRET));
+      return res.render("home", { name: data.name });
+    } catch (error) {
+      return res.render("home", { name: null });
+    }
+  } else return res.render("home", { name: null });
 });
 
 //invocação das rotas

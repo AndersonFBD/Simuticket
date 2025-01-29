@@ -1,0 +1,34 @@
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TicketStore - Home</title>
+  </head>
+  <body>
+    <header>
+      <section>
+        <h1>Ticket Store</h1>
+      </section>
+    </header>
+    <main>
+      {{#if name}}
+        <p>
+          Bem vindo à Homepage
+          {{name}}
+        </p><br /><br />
+        <form action="/auth/logout" method="post">
+          <input type="submit" value="LOGOUT" />
+        </form>
+      {{else}}
+        <p>
+          Bem vindo à Homepage, faça
+          <a href="/auth/login">login</a>
+          para prosseguir
+        </p>
+      {{/if}}
+    </main>
+    <footer>
+      <p>criado como projeto para a disciplina de desenvolvimento web backend</p>
+    </footer>
+  </body>
+</html>
