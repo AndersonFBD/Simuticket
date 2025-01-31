@@ -18,7 +18,10 @@ exports.getAllFromUser = async (req, res) => {
 
   try {
     let userTickets = await Tmodel.getTicketsOfCustomer(user);
-    return res.status(200).json(userTickets);
+    // return res.status(200).json(userTickets);
+    if (user == req.id)
+      return res.status(200).render("myTickets", { data: userTickets });
+    else return res.status(403).json({ error: "id não compatível" });
   } catch (err) {
     return res.status(500).json({
       message: "houve um erro na busca dos tickets",
@@ -58,14 +61,18 @@ exports.getTicket = async (req, res) => {
 
 exports.addTicket = async (req, res) => {
   const ticket = req.body;
-
+  console.log(ticket);
   try {
-    let novoTicket = await Tmodel.save(ticket);
+    let novoTicket = await Tmodel.save(
+      ticket.eventID,
+      ticket.customerID,
+      ticket.price
+    );
     return res.status(200).json(novoTicket);
   } catch (error) {
     return res.status(500).json({
       message: "houve um erro na criação do bilhete",
-      error: err.message,
+      error: error.message,
     });
   }
 };

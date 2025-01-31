@@ -13,10 +13,10 @@ module.exports = {
     const TicketList = await TicketModel.find({});
     return TicketList;
   },
-  save: async (eventID, CustomerID, price) => {
+  save: async (eventID, customerID, price) => {
     const newTicket = new TicketModel({
       eventID: eventID,
-      customerID: CustomerID,
+      customerID: customerID,
       price: price,
     });
     await newTicket.save();
@@ -39,7 +39,7 @@ module.exports = {
     return await TicketModel.findById(id);
   },
   getTicketsOfCustomer: async (customer) => {
-    return TicketModel.find({ customerID: customer });
+    return TicketModel.find({ customerID: customer }).lean();
   },
   getTicketsFromEvent: async (event) => {
     return TicketModel.find({ EventID: event });

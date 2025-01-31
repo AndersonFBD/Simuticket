@@ -1,0 +1,40 @@
+body {
+  background-color: lightcyan;
+  display: flex;
+  width: 100vw;
+  height: auto;
+  border: 1px solid red;
+  margin: 0;
+}
+main {
+  display: inherit;
+  width: 100%;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+.topbar {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  justify-content: space-around;
+  text-align: center;
+  align-items: center;
+}
+
+.tableStyle {
+  text-align: center;
+  box-shadow: 5px 5px 10px #888888;
+}
+
+.tablehead {
+  justify-content: space-between;
+  border: 3px solid cornflowerblue;
+  color: purple;
+}
+
+.cell {
+  border: 1px solid black;
+  width: 33%;
+  margin: 0;
+}

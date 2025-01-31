@@ -13,11 +13,12 @@
     <main>
       {{#if name}}
         <p>
-          Bem vindo à Homepage
+          Bem vindo de volta
           {{name}}
         </p><br /><br />
+        <a href="/tickets/byUser/{{id}}">meus bilhetes</a>
         <form action="/auth/logout" method="post">
-          <input type="submit" value="LOGOUT" />
+          <input type="submit" value="SAIR" />
         </form>
       {{else}}
         <p>

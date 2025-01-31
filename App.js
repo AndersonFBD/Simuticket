@@ -14,6 +14,7 @@ const ticketRoutes = require("./routes/TicketRoutes");
 const authRoutes = require("./routes/AuthRoutes");
 
 //utilitários
+app.use(Express.static("public"));
 app.engine("hbs", engine({ extname: ".hbs", defaultLayout: false }));
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "views"));
@@ -26,11 +27,11 @@ app.get("/", (req, res) => {
   if (req.cookies.session) {
     try {
       let data = jwt.verify(req.cookies.session, String(process.env.SECRET));
-      return res.render("home", { name: data.name });
+      return res.render("home", { name: data.name, id: data.id });
     } catch (error) {
-      return res.render("home", { name: null });
+      return res.render("home", { name: null, id: null });
     }
-  } else return res.render("home", { name: null });
+  } else return res.render("home", { name: null, id: null });
 });
 
 //invocação das rotas
