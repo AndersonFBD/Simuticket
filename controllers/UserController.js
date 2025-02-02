@@ -1,8 +1,12 @@
 const uModel = require("../models/UserModel");
 
 exports.createUser = async (req, res) => {
-  const { username, password, admin } = req.body;
-  const existingUser = await uModel.getUserbyName(username);
+  const createdUser = {
+    username: req.body.username,
+    password: req.body.password,
+    admin: false,
+  };
+  const existingUser = await uModel.getUserbyName(createdUser.username);
   if (existingUser.length > 0) {
     console.log(existingUser);
     return res.status(409).json({ message: "Este usuario já existe" });
@@ -10,7 +14,11 @@ exports.createUser = async (req, res) => {
   try {
     console.log(req.body);
 
-    let user = await uModel.save(username, password, admin);
+    let user = await uModel.save(
+      createdUser.username,
+      createdUser.password,
+      createdUser.admin
+    );
     return res.status(201).json({ message: "usuario cadastrado", user: user });
   } catch (error) {
     console.error(error);

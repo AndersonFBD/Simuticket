@@ -4,6 +4,9 @@ const router = Express.Router();
 const uController = require("../controllers/UserController");
 
 router.get("/", uController.getUser);
-router.post("/", uController.createUser);
+router.get("/create", (req, res) => {
+  res.render("newUser");
+});
+router.post("/create", uController.createUser);
 
 module.exports = router;
