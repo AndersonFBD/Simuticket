@@ -6,6 +6,8 @@ const path = require("path");
 const jwt = require("jsonwebtoken");
 const port = 3000;
 const app = Express();
+//middleware para criar um admin predefinido
+const { AdminInstall } = require("./middleware/adminInstall");
 
 //importação de rotas
 const userRoutes = require("./routes/UserRoutes");
@@ -23,7 +25,7 @@ app.use(cookieParser());
 app.use(Express.json());
 app.use(Express.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => {
+app.get("/", AdminInstall, (req, res) => {
   if (req.cookies.session) {
     try {
       let data = jwt.verify(req.cookies.session, String(process.env.SECRET));
