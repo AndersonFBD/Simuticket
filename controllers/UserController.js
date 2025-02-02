@@ -9,7 +9,10 @@ exports.createUser = async (req, res) => {
   const existingUser = await uModel.getUserbyName(createdUser.username);
   if (existingUser.length > 0) {
     console.log(existingUser);
-    return res.status(409).json({ message: "Este usuario já existe" });
+    return res
+      .status(409)
+      .render("error", { code: 409, message: "Este usuario já existe" });
+    // return res.status(409).json({ message: "Este usuario já existe" });
   }
   try {
     console.log(req.body);
