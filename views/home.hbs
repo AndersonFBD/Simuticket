@@ -12,14 +12,30 @@
     </header>
     <main>
       {{#if name}}
-        <p>
-          Bem vindo de volta
-          {{name}}
-        </p><br /><br />
-        <a href="/tickets/byUser/{{id}}">meus bilhetes</a>
-        <form action="/auth/logout" method="post">
-          <input type="submit" value="SAIR" />
-        </form>
+        <section>
+          <p>
+            Bem vindo de volta
+            {{name}}
+          </p><br /><br />
+          <a href="/tickets/byUser/{{id}}">meus bilhetes</a>
+          <form action="/auth/logout" method="post">
+            <input type="submit" value="SAIR" />
+          </form>
+        </section>
+        {{#if admin}}
+          <h3>Gerenciamento:</h3>
+          <ul>
+            <li>
+              <a href="/users/addAdmin">Adicionar novo admin</a>
+            </li>
+            <li>
+              <a href="/events/">gerenciar eventos</a>
+            </li>
+            <li>
+              <a href="#">gerenciar usuários</a>
+            </li>
+          </ul>
+        {{/if}}
       {{else}}
         <p>
           Bem vindo à Homepage, faça
