@@ -10,7 +10,7 @@ exports.createUser = async (req, res) => {
   const createdUser = {
     username: req.body.username,
     password: req.body.password,
-    admin: false,
+    admin: req.body.admin ? true : false,
   };
   const existingUser = await uModel.getUserbyName(createdUser.username);
   if (existingUser.length > 0) {
@@ -18,7 +18,6 @@ exports.createUser = async (req, res) => {
     return res
       .status(409)
       .render("error", { code: 409, message: "Este usuario já existe" });
-    // return res.status(409).json({ message: "Este usuario já existe" });
   }
   try {
     console.log(req.body);
@@ -34,8 +33,6 @@ exports.createUser = async (req, res) => {
     return res
       .status(500)
       .render("error", { code: 500, message: "Erro no cadastro do usuário" });
-
-    // .json({ message: "erro ao cadastrar usuario", error: error.message });
   }
 };
 
