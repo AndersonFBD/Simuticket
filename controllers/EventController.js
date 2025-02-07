@@ -10,7 +10,7 @@ exports.createEvent = async (req, res) => {
       EventAddress,
       EventDate
     );
-    return res.status(201).json({ message: "Evento adicionado", event: event });
+    return res.status(201).render("success", { evento: true });
   } catch (error) {
     console.error(error);
     return res.status(500).render("error", {
