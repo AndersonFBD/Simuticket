@@ -2,6 +2,7 @@ const eModel = require("../models/EventModel");
 
 exports.createEvent = async (req, res) => {
   const { EventName, EventDescription, EventAddress, EventDate } = req.body;
+  console.log(req.body);
 
   try {
     let event = await eModel.save(
@@ -42,7 +43,8 @@ exports.getEvent = async (req, res) => {
 exports.listEvents = async (req, res) => {
   try {
     let eventList = await eModel.list();
-    return res.status(200).json(eventList);
+    return res.status(200).render("events", { data: eventList });
+    // json(eventList);
   } catch (error) {
     console.error(error);
     return res.status(500).render("error", {

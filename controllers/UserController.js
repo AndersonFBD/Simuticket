@@ -27,7 +27,7 @@ exports.createUser = async (req, res) => {
       createdUser.password,
       createdUser.admin
     );
-    return res.status(201).json({ message: "usuario cadastrado", user: user });
+    return res.status(201).render("success", { usuario: true });
   } catch (error) {
     console.error(error);
     return res

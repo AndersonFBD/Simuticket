@@ -75,10 +75,12 @@ exports.addTicket = async (req, res) => {
   try {
     let novoTicket = await Tmodel.save(
       ticket.eventID,
+      ticket.eventName,
       ticket.customerID,
       ticket.price
     );
-    return res.status(200).json(novoTicket);
+    return res.status(200).render("success", { bilhete: true });
+    json(novoTicket);
   } catch (error) {
     return res.status(500).render("error", {
       code: 500,
