@@ -30,7 +30,11 @@ exports.getEvent = async (req, res) => {
         code: 404,
         message: "evento não encontrado",
       });
-    return res.status(200).json(event);
+
+    return res
+      .status(200)
+      .render("eventPage", { data: event, admin: req.admin });
+    // .json(event);
   } catch (error) {
     console.error(error);
     return res.status(500).render("error", {

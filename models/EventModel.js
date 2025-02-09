@@ -47,6 +47,6 @@ module.exports = {
     return await EventModel.findByIdAndDelete(id);
   },
   getEventById: async (id) => {
-    return await EventModel.findById(id);
+    return await EventModel.findById(id).lean();
   },
 };

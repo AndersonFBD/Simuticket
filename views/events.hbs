@@ -2,8 +2,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/myTickets.css" />
-    <title>Meus Bilhetes</title>
+    <link rel="stylesheet" href="/css/eventPage.css" />
+    <title>Eventos</title>
   </head>
   <body>
     <main>
@@ -15,27 +15,16 @@
         </form>
       </section>
 
-      <table class="tableStyle"><thead class="tablehead">
-          <tr>
-            <th>Evento</th>
-            <th>Descrição</th>
-            <th>Endereço</th>
-            <th>data</th>
-          </tr></thead>
-        <tbody>
-          {{#each data}}
-            <a href="/events/{{_id}}">
-              <tr>
-                <td class="cell">{{EventName}}</td>
-                <td class="cell">{{EventDescription}}</td>
-                <td class="cell">{{EventAddress}}</td>
-                <td class="cell">{{EventDate}}</td>
-              </tr>
-            </a>
-          {{/each}}
-        </tbody>
-      </table>
-
+      {{#each data}}
+        {{!-- <a href="/events/{{_id}}"> --}}
+        <div class="event" onclick="location.href='/events/{{_id}}'">
+          <h3>nome: {{EventName}}</h3>
+          {{!-- <p>Descrição: {{EventDescription}}</p> --}}
+          <h5>Local: {{EventAddress}}</h5>
+          <p>Data: {{EventDate}}</p>
+        </div>
+        {{! </a> }}
+      {{/each}}
     </main>
   </body>
 </html>
