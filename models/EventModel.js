@@ -3,29 +3,29 @@ const mongoose = require("mongoose");
 const EventSchema = new mongoose.Schema({
   EventName: String,
   EventDescription: String,
-  Available: Number,
+  // Available: Number,
   EventAddress: String,
-  EventDate: Date,
+  EventDate: String,
 });
 
 const EventModel = mongoose.model("Event", EventSchema);
 
 module.exports = {
   list: async () => {
-    const EventList = await EventModel.find({});
+    const EventList = await EventModel.find({}).lean();
     return EventList;
   },
   save: async (
     EventName,
     EventDescription,
-    Available,
+    // Available,
     EventAddress,
     EventDate
   ) => {
     const newEvent = new EventModel({
       EventName: EventName,
       EventDescription: EventDescription,
-      Available: Available,
+      // Available: Available,
       EventAddress: EventAddress,
       EventDate: EventDate,
     });

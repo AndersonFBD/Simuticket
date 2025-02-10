@@ -1,0 +1,25 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adicionar evento</title>
+  </head>
+  <body>
+    <main>
+      <h1>Adicione um novo evento:</h1>
+      <br /><br />
+      <form action="/events/addEvent" method="post">
+        <label for="EventName">Nome do Evento: </label>
+        <input type="text" name="EventName" id="EventName" /><br />
+        <label for="EventDescription">Descrição: </label>
+        <input type="text" name="EventDescription" id="EventDescription" /><br
+        /><br />
+        <label for="EventAddress">Endereço: </label>
+        <input type="text" name="EventAddress" id="EventAddress" /><br /><br />
+        <label for="EventDate">Data: </label>
+        <input type="date" name="EventDate" id="EventDate" /><br /><br />
+        <input type="submit" value="Salvar" />
+      </form>
+    </main>
+  </body>
+</html>

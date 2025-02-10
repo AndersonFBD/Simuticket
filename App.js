@@ -29,11 +29,15 @@ app.get("/", AdminInstall, (req, res) => {
   if (req.cookies.session) {
     try {
       let data = jwt.verify(req.cookies.session, String(process.env.SECRET));
-      return res.render("home", { name: data.name, id: data.id });
+      return res.render("home", {
+        name: data.name,
+        id: data.id,
+        admin: data.admin,
+      });
     } catch (error) {
-      return res.render("home", { name: null, id: null });
+      return res.render("home", { name: null, id: null, admin: false });
     }
-  } else return res.render("home", { name: null, id: null });
+  } else return res.render("home", { name: null, id: null, admin: false });
 });
 
 //invocação das rotas

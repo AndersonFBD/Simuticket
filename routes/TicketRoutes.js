@@ -7,9 +7,9 @@ const TControl = require("../controllers/TicketController");
 router.get("/allTickets", verifyCredentials, TControl.listAll);
 router.get("/byUser/:userID", verifyCredentials, TControl.getAllFromUser);
 router.get("/byEvent/:eventID", TControl.getAllFromEvent);
-router.get("/:id", TControl.getTicket);
-router.post("/", TControl.addTicket);
-router.put("/:id", TControl.editTicket);
-router.delete("/:id", TControl.deleteTicket);
+router.get("/:id", verifyCredentials, TControl.getTicket);
+router.post("/", verifyCredentials, TControl.addTicket);
+router.put("/:id", verifyCredentials, TControl.editTicket);
+router.delete("/:id", verifyCredentials, TControl.deleteTicket);
 
 module.exports = router;

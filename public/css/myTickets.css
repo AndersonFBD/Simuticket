@@ -1,5 +1,5 @@
 body {
-  background-color: lightcyan;
+  background-color: #e0ffff;
   display: flex;
   width: 100vw;
   height: auto;
@@ -20,9 +20,11 @@ main {
   justify-content: space-around;
   text-align: center;
   align-items: center;
+  border-bottom: 1px solid #99838a;
 }
 
 .tableStyle {
+  margin: 5%;
   text-align: center;
   box-shadow: 5px 5px 10px #888888;
 }
