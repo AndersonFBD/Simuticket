@@ -34,9 +34,7 @@ module.exports = {
   },
   update: async (id, editedEvent) => {
     let foundEvent = await EventModel.findById(id);
-    console.log(foundEvent);
     if (!foundEvent) return false;
-    console.log(editedEvent);
     Object.keys(editedEvent).forEach(
       (key) => (foundEvent[key] = editedEvent[key])
     );

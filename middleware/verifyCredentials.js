@@ -6,7 +6,6 @@ exports.verifyCredentials = async (req, res, next) => {
     let jwtObject = req.cookies.session;
     try {
       let decoded = jwt.verify(jwtObject, String(process.env.SECRET));
-      console.log(decoded);
       req.id = decoded.id;
       req.name = decoded.name;
       req.admin = decoded.admin;
