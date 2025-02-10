@@ -2,7 +2,6 @@ const eModel = require("../models/EventModel");
 
 exports.createEvent = async (req, res) => {
   const { EventName, EventDescription, EventAddress, EventDate } = req.body;
-  console.log(req.body);
 
   try {
     let event = await eModel.save(

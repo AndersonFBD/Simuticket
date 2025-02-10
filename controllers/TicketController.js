@@ -71,7 +71,6 @@ exports.getTicket = async (req, res) => {
 
 exports.addTicket = async (req, res) => {
   const ticket = req.body;
-  console.log(ticket);
   try {
     let novoTicket = await Tmodel.save(
       ticket.eventID,
