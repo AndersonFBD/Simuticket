@@ -81,6 +81,7 @@ exports.addTicket = async (req, res) => {
       code: 404,
       message: "A categoria de bilhete procurada não pôde ser encontrada",
     });
+  console.log("tipo: " + type);
 
   if (Number(ticket.qty) > Number(type.vacancies))
     return res.status(400).render("error", {
@@ -88,16 +89,20 @@ exports.addTicket = async (req, res) => {
       message: "a quantidade requerida é maior que a quantidade disponível",
     });
 
-  const event = EModel.getEventById(type.eventID);
-
+  const event = await EModel.getEventById(type.eventID);
+  console.log("evento:" + event);
   ticket.eventID = event._id;
   ticket.customerID = req.id;
   ticket.EventName = event.EventName;
+  console.log(event.EventName);
   ticket.EventDate = event.EventDate;
+  console.log(event.EventDate);
   ticket.EventAddress = event.EventAddress;
+  console.log(event.EventAddress);
   ticket.type = type.typeName;
   ticket.price = type.price;
 
+  console.log("ticket: " + ticket);
   try {
     for (let i = 0; i < Number(ticket.qty); i++) {
       await Tmodel.save(

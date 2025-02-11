@@ -22,9 +22,10 @@
       <p><h3>Local: </h3>{{data.EventAddress}}</p>
       <p><h3>Data: </h3> {{data.EventDate}}</p>
       {{! alterar o botão para a página de compra de ingresso }}
-      <button
+      {{!-- <button
         onclick="window.location.href='/types/{{data._id}}'"
-      >comprar</button>
+      >comprar</button> --}}
+      <a href="/types/{{data._id}}">ver ingressos</a>
     </main>
   </body>
 </html>

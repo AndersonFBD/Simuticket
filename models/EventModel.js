@@ -44,6 +44,8 @@ module.exports = {
     return await EventModel.findByIdAndDelete(id);
   },
   getEventById: async (id) => {
-    return await EventModel.findById(id).lean();
+    const result = await EventModel.findById(id).lean();
+    console.log(result);
+    return result;
   },
 };
