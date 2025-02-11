@@ -35,7 +35,12 @@ app.get("/", AdminInstall, (req, res) => {
         admin: data.admin,
       });
     } catch (error) {
-      return res.render("home", { name: null, id: null, admin: false });
+      return res.render("home", {
+        name: null,
+        id: null,
+        admin: false,
+        expiry: true,
+      });
     }
   } else return res.render("home", { name: null, id: null, admin: false });
 });

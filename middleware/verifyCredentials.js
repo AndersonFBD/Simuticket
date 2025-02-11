@@ -12,10 +12,16 @@ exports.verifyCredentials = async (req, res, next) => {
 
       next();
     } catch (error) {
-      return res.status(401).send({
-        message: "sua sessão expirou entre novamente",
-        error: error,
+      return res.render("home", {
+        name: null,
+        id: null,
+        admin: false,
+        expiry: true,
       });
+      // .send({
+      //   message: "sua sessão expirou entre novamente",
+      //   error: error,
+      // });
     }
   } catch (error) {
     return res

@@ -38,8 +38,11 @@
           </ul>
         {{/if}}
       {{else}}
+        {{#if expiry}}
+          <p>Sua sessão expitrou</p><br /><br />
+        {{/if}}
         <p>
-          Bem vindo à Homepage, faça
+          Bem vindo, faça
           <a href="/auth/login">login</a>
           para prosseguir
         </p>
