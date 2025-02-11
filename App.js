@@ -18,7 +18,14 @@ const authRoutes = require("./routes/AuthRoutes");
 
 //utilitários
 app.use(Express.static("public"));
-app.engine("hbs", engine({ extname: ".hbs", defaultLayout: false }));
+app.engine(
+  "hbs",
+  engine({
+    extname: ".hbs",
+    defaultLayout: false,
+    partialsDir: "views/partials",
+  })
+);
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "views"));
 app.use(require("./config/dbConnect"));
