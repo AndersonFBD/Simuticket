@@ -46,7 +46,7 @@ exports.getEvent = async (req, res) => {
 exports.listEvents = async (req, res) => {
   try {
     let eventList = await eModel.list();
-    return res.status(200).render("events", { data: eventList });
+    return res.status(200).render("cardpage", { data: eventList, event: true });
     // json(eventList);
   } catch (error) {
     console.error(error);
