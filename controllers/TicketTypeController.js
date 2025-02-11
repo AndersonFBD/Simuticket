@@ -42,6 +42,14 @@ exports.addType = async (req, res) => {
   const type = req.body;
   const event = req.params.eventID;
 
+  if (!req.admin)
+    return res
+      .status(403)
+      .render("error", {
+        code: 403,
+        message: "disponível apenas para administradoes",
+      });
+
   try {
     let newType = await TTModel.save(
       event,

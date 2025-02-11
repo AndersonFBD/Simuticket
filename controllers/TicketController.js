@@ -98,7 +98,7 @@ exports.editTicket = async (req, res) => {
   } catch (err) {
     return res.status(500).render("error", {
       code: 500,
-      message: "houve um erro ao atalizar o ingresso",
+      message: "houve um erro ao atualizar o ingresso",
     });
   }
 };
