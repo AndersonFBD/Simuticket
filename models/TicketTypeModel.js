@@ -11,7 +11,9 @@ const ttModel = mongoose.model("Ticket_Type", TypeSchema);
 
 module.exports = {
   listFromEvent: async (eventID) => {
-    const TicketTypes = await ttModel.find({ eventID: eventID }).lean();
+    const TicketTypes = await ttModel
+      .find({ eventID: eventID, vacancies: { $gt: 0 } })
+      .lean();
     return TicketTypes;
   },
   save: async (eventID, typeName, price, vacancies) => {
