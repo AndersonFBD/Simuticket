@@ -33,7 +33,10 @@
       {{#if type}}
         <pre>{{data}}</pre>
         {{#each data}}
-          <div class="event" onclick="location.href='/tickets/{{_id}}'">
+          <div
+            class="event"
+            onclick="location.href='/tickets/purchase/{{_id}}'"
+          >
             <h3>{{typeName}}</h3>
             <h5>disponível: {{vacancies}}</h5>
             <p>valor: {{price}}</p>

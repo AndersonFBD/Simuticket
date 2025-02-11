@@ -39,6 +39,6 @@ module.exports = {
     return await ttModel.findByIdAndDelete(id);
   },
   getTypeByid: async (id) => {
-    return await ttModel.findById(id).lean();
+    return await ttModel.findById(id);
   },
 };
