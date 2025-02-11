@@ -13,6 +13,7 @@ const { AdminInstall } = require("./middleware/adminInstall");
 const userRoutes = require("./routes/UserRoutes");
 const eventRoutes = require("./routes/EventRoutes");
 const ticketRoutes = require("./routes/TicketRoutes");
+const typeRoutes = require("./routes/TypeRoutes");
 const authRoutes = require("./routes/AuthRoutes");
 
 //utilitários
@@ -50,6 +51,7 @@ app.use("/auth", authRoutes);
 app.use("/users", userRoutes);
 app.use("/events", eventRoutes);
 app.use("/tickets", ticketRoutes);
+app.use("/types", typeRoutes);
 
 app.listen(port, () => {
   console.log("listening on port: " + port);

@@ -12,7 +12,9 @@
         <input type="submit" value="SAIR" />
       </form>
       {{#if admin}}
-        <button onclick="window.location.href='/'">adicionar tipo de ingresso</button>
+        <button
+          onclick="window.location.href='/types/add/{{data._id}}'"
+        >adicionar tipo de ingresso</button>
       {{/if}}
     </section>
     <main>

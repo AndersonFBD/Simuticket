@@ -7,7 +7,7 @@ const TypeSchema = new mongoose.Schema({
   vacancies: Number,
 });
 
-const ttModel = mongoose.model("Ticket_Type", EventSchema);
+const ttModel = mongoose.model("Ticket_Type", TypeSchema);
 
 module.exports = {
   listFromEvent: async (eventID) => {
@@ -15,7 +15,7 @@ module.exports = {
     return TicketTypes;
   },
   save: async (eventID, typeName, price, vacancies) => {
-    const newTType = new EventModel({
+    const newTType = new ttModel({
       eventID: eventID,
       typeName: typeName,
       price: price,

@@ -43,12 +43,10 @@ exports.addType = async (req, res) => {
   const event = req.params.eventID;
 
   if (!req.admin)
-    return res
-      .status(403)
-      .render("error", {
-        code: 403,
-        message: "disponível apenas para administradoes",
-      });
+    return res.status(403).render("error", {
+      code: 403,
+      message: "disponível apenas para administradoes",
+    });
 
   try {
     let newType = await TTModel.save(
@@ -62,7 +60,7 @@ exports.addType = async (req, res) => {
     console.error(err);
     return res.status(500).render("error", {
       code: 500,
-      message: "houve um erro ao adicionar a tipo de ingresso ao evento",
+      message: "houve um erro ao adicionar o tipo de ingresso ao evento",
     });
   }
 };
