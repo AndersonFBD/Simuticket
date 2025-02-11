@@ -33,15 +33,10 @@ module.exports = {
     await foundType.save();
     return foundType;
   },
-  subtract: async (typeID, qty) => {
-    let type = await ttModel.findById(typeID);
-    if (!type) return null;
-    if (Number(type.vacancies) - Number(qty) < 0) return false;
-    type.vacancies = Number(type.vacancies) - Number(qty);
-    await type.save();
-    return true;
-  },
   delete: async (id) => {
     return await ttModel.findByIdAndDelete(id);
+  },
+  getTypeByid: async (id) => {
+    return await ttModel.findById(id).lean();
   },
 };
