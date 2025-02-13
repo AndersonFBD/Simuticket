@@ -45,7 +45,6 @@ module.exports = {
   },
   getEventById: async (id) => {
     const result = await EventModel.findById(id).lean();
-    console.log(result);
     return result;
   },
 };

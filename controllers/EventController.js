@@ -32,7 +32,7 @@ exports.getEvent = async (req, res) => {
 
     return res
       .status(200)
-      .render("eventPage", { data: event, admin: req.admin });
+      .render("detailPage", { data: event, event: true, admin: req.admin });
     // .json(event);
   } catch (error) {
     console.error(error);

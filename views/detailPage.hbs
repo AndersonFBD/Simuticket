@@ -1,0 +1,49 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/detailPage.css">
+    <title>Detalhes do evento</title>
+  </head>
+  <body>
+    {{#if event}}
+    {{> header title = data.EventName}}
+    {{/if}}
+    <main>
+      <div class="detailPanel">
+        {{#if event}}
+          <div class="field">
+            <p class="linetitle">Sobre: <span class="linecontent">{{data.EventDescription}}</span></p>
+          </div>
+          <div class="field">
+            <p class="linetitle">Local: <span class="linecontent">{{data.EventAddress}}</span></p>
+          </div>
+          <div class="field">
+            <p class="linetitle">Data: <span class="linecontent">{{data.EventDate}}</span></p>
+          </div>
+        {{/if}}
+      </div>
+      <div class="buttonarea">
+        <button
+        class="buttons back"
+          onclick="history.back()"
+        >voltar</button>
+      
+      {{#if event}}
+      {{#if admin}}
+        <button
+          class="buttons add"
+          onclick="window.location.href='/types/add/{{data._id}}'"
+        >adicionar tipo de ingresso</button>
+      {{/if}}
+      <button
+          class="buttons buy"
+          onclick="window.location.href='/types/{{data._id}}'"
+        >comprar bilhete</button>
+        {{!-- <a href="/types/{{data._id}}">ver ingressos</a> --}}
+      {{/if}}
+      </div>
+
+    </main>
+  </body>
+</html>

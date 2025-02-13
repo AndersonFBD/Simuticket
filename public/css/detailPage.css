@@ -1,0 +1,73 @@
+body {
+  display: flex;
+  flex-flow: column wrap;
+  background-color: #d9d9b0;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 70%;
+}
+
+.detailpanel {
+  display: flex;
+  padding: 2% 0;
+  text-align: justify;
+  align-items: center;
+  flex-flow: column nowrap;
+  background-color: white;
+  border-radius: 25px;
+  width: 30%;
+}
+
+.field {
+  display: flex;
+  flex-direction: row;
+  text-align: justify;
+  /* border: 1px solid #ff0000; */
+  width: 70%;
+  height: auto;
+}
+.linetitle {
+  font-weight: 600;
+  font-size: 20pt;
+}
+.linecontent {
+  font-weight: 400;
+  font-size: 18pt;
+}
+
+.buttonArea {
+  display: flex;
+  width: 40%;
+  height: 5vh;
+  justify-content: space-between;
+}
+.buttons {
+  min-width: 20%;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  height: 100%;
+  font-size: 16pt;
+}
+.buttons:hover {
+  cursor: pointer;
+  filter: brightness(75%);
+}
+
+.buy {
+  background-color: green;
+}
+
+.back {
+  background-color: red;
+}
+
+.add {
+  background-color: blue;
+}
