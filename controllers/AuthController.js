@@ -9,8 +9,7 @@ exports.login = async (req, res) => {
   if (!savedUser) {
     return res
       .status(400)
-      .json({ message: "credenciais incorretas" })
-      .send("ERRO");
+      .render("error", { code: 400, message: "credenciais inválidas" });
   }
 
   try {

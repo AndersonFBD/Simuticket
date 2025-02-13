@@ -22,10 +22,18 @@ main {
   border-bottom: 1px solid #99838a;
 }
 
-.event {
-  margin: 2em;
+.content {
+  margin-top: 50px;
   display: flex;
-  width: 15%;
+  flex-flow: row wrap;
+  width: 100%;
+  height: auto;
+}
+
+.event {
+  margin: 10px;
+  display: flex;
+  width: 15vw;
   height: fit-content;
   flex-direction: column;
   justify-content: space-evenly;
