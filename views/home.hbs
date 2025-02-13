@@ -2,13 +2,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/home.css">
     <title>TicketStore - Home</title>
   </head>
   <body>
     <header>
-      <section>
-        <h1>Ticket Store</h1>
-      </section>
+        {{> header title = "TicketStore"}}
     </header>
     <main>
       {{#if name}}
