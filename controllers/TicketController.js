@@ -58,13 +58,14 @@ exports.getAllFromEvent = async (req, res) => {
 exports.getTicket = async (req, res) => {
   try {
     const ticket = await Tmodel.getTicket(req.params.id);
+    console.log(ticket);
     if (!ticket) {
       return res.status(404).render("error", {
         code: 404,
         message: "ticket não encontrado",
       });
     }
-    return res.status(200).json(ticket);
+    return res.status(200).render("detailPage", { data: ticket, ticket: true });
   } catch (err) {
     return res.status(500).render("error", {
       code: 500,

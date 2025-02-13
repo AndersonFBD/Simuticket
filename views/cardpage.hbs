@@ -2,12 +2,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/eventPage.css" />
+    <link rel="stylesheet" href="/css/cardPage.css" />
     <title>Eventos</title>
   </head>
   <body>
+    {{> header title = "selecione o evento"}}
     <main>
-      <section class="topBar">
+      {{!-- <section class="topBar">
         <a href="/">Home</a>
         {{#if event}}
           <h1>Escolha o Evento</h1>
@@ -18,7 +19,7 @@
         <form action="/auth/logout" method="post">
           <input type="submit" value="SAIR" />
         </form>
-      </section>
+      </section> --}}
 
       {{#if event}}
         {{#each data}}

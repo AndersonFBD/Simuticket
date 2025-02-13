@@ -52,10 +52,12 @@ module.exports = {
     return await TicketModel.findByIdAndDelete(id);
   },
   getTicket: async (id) => {
-    return await TicketModel.findById(id);
+    return await TicketModel.findById(id).lean();
   },
   getTicketsOfCustomer: async (customer) => {
-    return TicketModel.find({ customerID: customer }).lean();
+    const tickets = await TicketModel.find({ customerID: customer }).lean();
+    console.log(tickets);
+    return tickets;
   },
   getTicketsFromEvent: async (event) => {
     return TicketModel.find({ EventID: event });

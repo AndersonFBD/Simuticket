@@ -9,6 +9,9 @@
     {{#if event}}
     {{> header title = data.EventName}}
     {{/if}}
+    {{#if ticket}}
+    {{> header title = "detalhes do ingresso"}}
+    {{/if}}
     <main>
       <div class="detailPanel">
         {{#if event}}
@@ -20,6 +23,26 @@
           </div>
           <div class="field">
             <p class="linetitle">Data: <span class="linecontent">{{data.EventDate}}</span></p>
+          </div>
+        {{/if}}
+        {{#if ticket}}
+          <div class="field">
+            <p class="linetitle">Identificador: <span class="linecontent">{{data._id}}</span></p>
+          </div>
+          <div class="field">
+            <p class="linetitle">Evento: <span class="linecontent">{{data.EventName}}</span></p>
+          </div>
+          <div class="field">
+            <p class="linetitle">Local: <span class="linecontent">{{data.EventAddress}}</span></p>
+          </div>
+          <div class="field">
+            <p class="linetitle">Data: <span class="linecontent">{{data.EventDate}}</span></p>
+          </div>          
+          <div class="field">
+            <p class="linetitle">Categoria: <span class="linecontent">{{data.type}}</span></p>
+          </div>
+                    <div class="field">
+            <p class="linetitle">Preço: <span class="linecontent">{{data.price}}</span></p>
           </div>
         {{/if}}
       </div>

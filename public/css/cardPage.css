@@ -1,18 +1,16 @@
 body {
-  background-color: #e0ffff;
   display: flex;
-  width: 100vw;
-  height: fit-content;
-  border: 1px solid red;
-  margin: 0;
+  flex-flow: column wrap;
+  background-color: #d9d9b0;
 }
+
 main {
   display: flex;
-  flex-direction: row;
-  width: 100%;
-  flex-flow: column nowrap;
-  justify-content: flex-start;
+  flex-direction: column;
+  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
+  height: 70%;
 }
 .topbar {
   display: flex;
@@ -31,6 +29,7 @@ main {
   height: fit-content;
   flex-direction: column;
   justify-content: space-evenly;
+  background-color: #02bfbf;
   padding: 1%;
   text-align: left;
   border: #99838a 1px solid;

@@ -6,32 +6,33 @@
     <title>Meus Bilhetes</title>
   </head>
   <body>
+    {{> header title = "Meus ingressos"}}
     <main>
-      <section class="topBar">
-        <a href="/">Home</a>
-        <h1>Meus bilhetes</h1>
-        <form action="/auth/logout" method="post">
-          <input type="submit" value="SAIR" />
-        </form>
-      </section>
-
-      <table class="tableStyle"><thead class="tablehead">
-          <tr>
-            <th>Bilhete</th>
-            <th>evento</th>
-            <th>valor</th>
-          </tr></thead>
-        <tbody>
-          {{#each data}}
-            <tr>
-              <td class="cell">{{_id}}</td>
-              <td class="cell">{{eventID}}</td>
-              <td class="cell">{{price}}</td>
-            </tr>
-          {{/each}}
-        </tbody>
-      </table>
-
+      <ul>
+        {{#each data}}
+          
+          <li onclick="window.location.href='/tickets/{{_id}}'">
+            <div class="card">
+              <div class="field">
+                <p>Ingresso:</p>
+                <span class="cell">{{_id}}</span>
+              </div>
+              <div class="field">
+                <p>Evento:</p>
+                <span class="cell">{{EventName}}</span>
+              </div>
+              <div class="field">
+                <p>valor:</p>
+                <span class="cell">{{price}}</span>
+              </div>
+              <div class="field">
+                <p>Data:</p>
+                <span class="cell">{{EventDate}}</span>
+              </div>
+            </div>
+          </li>
+        {{/each}}
+      </ul>
     </main>
   </body>
 </html>
