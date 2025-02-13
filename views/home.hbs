@@ -2,13 +2,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/home.css">
     <title>TicketStore - Home</title>
   </head>
   <body>
     <header>
-      <section>
-        <h1>Ticket Store</h1>
-      </section>
+        {{> header title = "TicketStore"}}
     </header>
     <main>
       {{#if name}}
@@ -30,7 +29,7 @@
               <a href="/users/addAdmin">Adicionar novo admin</a>
             </li>
             <li>
-              <a href="/events/">gerenciar eventos</a>
+              <a href="/events/addEvent">Adicionar um evento</a>
             </li>
             <li>
               <a href="#">gerenciar usuários</a>
@@ -38,15 +37,19 @@
           </ul>
         {{/if}}
       {{else}}
+        {{#if expiry}}
+          <p>Sua sessão expirou</p><br /><br />
+        {{/if}}
         <p>
-          Bem vindo à Homepage, faça
-          <a href="/auth/login">login</a>
-          para prosseguir
+          Bem vindo, faça login para prosseguir:
         </p>
+        {{> login}}
       {{/if}}
     </main>
     <footer>
-      <p>criado como projeto para a disciplina de desenvolvimento web backend</p>
+      <div class="textorodape">
+         <p>criado como projeto para a disciplina de desenvolvimento web backend</p>
+      </div>
     </footer>
   </body>
 </html>

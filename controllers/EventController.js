@@ -2,7 +2,6 @@ const eModel = require("../models/EventModel");
 
 exports.createEvent = async (req, res) => {
   const { EventName, EventDescription, EventAddress, EventDate } = req.body;
-  console.log(req.body);
 
   try {
     let event = await eModel.save(
@@ -30,7 +29,11 @@ exports.getEvent = async (req, res) => {
         code: 404,
         message: "evento não encontrado",
       });
-    return res.status(200).json(event);
+
+    return res
+      .status(200)
+      .render("detailPage", { data: event, event: true, admin: req.admin });
+    // .json(event);
   } catch (error) {
     console.error(error);
     return res.status(500).render("error", {
@@ -43,7 +46,7 @@ exports.getEvent = async (req, res) => {
 exports.listEvents = async (req, res) => {
   try {
     let eventList = await eModel.list();
-    return res.status(200).render("events", { data: eventList });
+    return res.status(200).render("cardpage", { data: eventList, event: true });
     // json(eventList);
   } catch (error) {
     console.error(error);

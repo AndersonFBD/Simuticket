@@ -1,0 +1,50 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/cardPage.css" />
+    <title>Eventos</title>
+  </head>
+  <body>
+    {{> header title = "selecione o evento"}}
+    <main class="content">
+      {{!-- <section class="topBar">
+        <a href="/">Home</a>
+        {{#if event}}
+          <h1>Escolha o Evento</h1>
+        {{/if}}
+        {{#if type}}
+          <h1>Selecione o tipo de ingresso:</h1>
+        {{/if}}
+        <form action="/auth/logout" method="post">
+          <input type="submit" value="SAIR" />
+        </form>
+      </section> --}}
+
+      {{#if event}}
+        {{#each data}}
+          <div class="event" onclick="location.href='/events/{{_id}}'">
+            <h3>nome: {{EventName}}</h3>
+            {{!-- <p>Descrição: {{EventDescription}}</p> --}}
+            <h5>Local: {{EventAddress}}</h5>
+            <p>Data: {{EventDate}}</p>
+          </div>
+        {{/each}}
+      {{/if}}
+      {{#if type}}
+        {{#each data}}
+          <div
+            class="event"
+          >
+            <h3>{{typeName}}</h3>
+            <h5>disponível: {{vacancies}}</h5>
+            <p>valor: {{price}}</p>
+            <div>
+              {{> addTicket type=_id max=vacancies}}
+            </div>
+          </div>
+        {{/each}}
+      {{/if}}
+    </main>
+  </body>
+</html>

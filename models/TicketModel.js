@@ -3,6 +3,10 @@ const mongoose = require("mongoose");
 const TicketSchema = new mongoose.Schema({
   eventID: String,
   customerID: String,
+  EventName: String,
+  EventDate: String,
+  EventAddress: String,
+  type: String,
   price: Number,
 });
 
@@ -13,11 +17,23 @@ module.exports = {
     const TicketList = await TicketModel.find({});
     return TicketList;
   },
-  save: async (eventID, customerID, price) => {
+  save: async (
+    eventID,
+    customerID,
+    EventName,
+    EventDate,
+    EventAddress,
+    type,
+    price
+  ) => {
     const newTicket = new TicketModel({
       eventID: eventID,
       customerID: customerID,
       price: price,
+      EventName: EventName,
+      EventDate: EventDate,
+      EventAddress: EventAddress,
+      type: type,
     });
     await newTicket.save();
     return newTicket;
@@ -36,10 +52,12 @@ module.exports = {
     return await TicketModel.findByIdAndDelete(id);
   },
   getTicket: async (id) => {
-    return await TicketModel.findById(id);
+    return await TicketModel.findById(id).lean();
   },
   getTicketsOfCustomer: async (customer) => {
-    return TicketModel.find({ customerID: customer }).lean();
+    const tickets = await TicketModel.find({ customerID: customer }).lean();
+    console.log(tickets);
+    return tickets;
   },
   getTicketsFromEvent: async (event) => {
     return TicketModel.find({ EventID: event });

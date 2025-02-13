@@ -1,5 +1,8 @@
 const Tmodel = require("../models/TicketModel");
+const EModel = require("../models/EventModel");
+const ttModel = require("../models/TicketTypeModel");
 
+// não utilizado
 exports.listAll = async (req, res) => {
   if (!req.admin) {
     return res.status(403).render("error", {
@@ -37,6 +40,7 @@ exports.getAllFromUser = async (req, res) => {
   }
 };
 
+//não utilizado
 exports.getAllFromEvent = async (req, res) => {
   const eventID = req.params.eventID;
   try {
@@ -54,13 +58,14 @@ exports.getAllFromEvent = async (req, res) => {
 exports.getTicket = async (req, res) => {
   try {
     const ticket = await Tmodel.getTicket(req.params.id);
+    console.log(ticket);
     if (!ticket) {
       return res.status(404).render("error", {
         code: 404,
         message: "ticket não encontrado",
       });
     }
-    return res.status(200).json(ticket);
+    return res.status(200).render("detailPage", { data: ticket, ticket: true });
   } catch (err) {
     return res.status(500).render("error", {
       code: 500,
@@ -71,16 +76,48 @@ exports.getTicket = async (req, res) => {
 
 exports.addTicket = async (req, res) => {
   const ticket = req.body;
-  console.log(ticket);
+  const type = await ttModel.getTypeByid(req.params.typeId);
+  if (!type)
+    return res.status(404).render("error", {
+      code: 404,
+      message: "A categoria de bilhete procurada não pôde ser encontrada",
+    });
+  console.log("tipo: " + type);
+
+  if (Number(ticket.qty) > Number(type.vacancies))
+    return res.status(400).render("error", {
+      code: 400,
+      message: "a quantidade requerida é maior que a quantidade disponível",
+    });
+
+  const event = await EModel.getEventById(type.eventID);
+  ticket.eventID = event._id;
+  ticket.customerID = req.id;
+  ticket.EventName = event.EventName;
+  ticket.EventDate = event.EventDate;
+  ticket.EventAddress = event.EventAddress;
+  ticket.type = type.typeName;
+  ticket.price = type.price;
+
+  console.log("ticket: " + ticket);
   try {
-    let novoTicket = await Tmodel.save(
-      ticket.eventID,
-      ticket.eventName,
-      ticket.customerID,
-      ticket.price
-    );
+    for (let i = 0; i < Number(ticket.qty); i++) {
+      await Tmodel.save(
+        ticket.eventID,
+        ticket.customerID,
+        ticket.EventName,
+        ticket.EventDate,
+        ticket.EventAddress,
+        ticket.type,
+        ticket.price
+      );
+      type.vacancies = Number(type.vacancies) - 1;
+    }
+
+    ttModel.update(req.params.typeId, type);
+
     return res.status(200).render("success", { bilhete: true });
-    json(novoTicket);
+    // json(novoTicket);
   } catch (error) {
     return res.status(500).render("error", {
       code: 500,
@@ -99,7 +136,7 @@ exports.editTicket = async (req, res) => {
   } catch (err) {
     return res.status(500).render("error", {
       code: 500,
-      message: "houve um erro ao atalizar o ingresso",
+      message: "houve um erro ao atualizar o ingresso",
     });
   }
 };

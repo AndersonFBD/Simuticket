@@ -1,0 +1,5 @@
+<form action="/tickets/purchase/{{type}}" method="post">
+  <label for="qty">quantidade:</label>
+  <input type="number" name="qty" id="qty" min="1" max="{{max}}" required />
+  <input type="submit" value="realizar o pedido" />
+</form>

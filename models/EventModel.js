@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const EventSchema = new mongoose.Schema({
   EventName: String,
   EventDescription: String,
-  // Available: Number,
   EventAddress: String,
   EventDate: String,
 });
@@ -34,9 +33,7 @@ module.exports = {
   },
   update: async (id, editedEvent) => {
     let foundEvent = await EventModel.findById(id);
-    console.log(foundEvent);
     if (!foundEvent) return false;
-    console.log(editedEvent);
     Object.keys(editedEvent).forEach(
       (key) => (foundEvent[key] = editedEvent[key])
     );
@@ -47,6 +44,7 @@ module.exports = {
     return await EventModel.findByIdAndDelete(id);
   },
   getEventById: async (id) => {
-    return await EventModel.findById(id);
+    const result = await EventModel.findById(id).lean();
+    return result;
   },
 };
