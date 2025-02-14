@@ -29,7 +29,6 @@ main {
   display: flex;
   flex-direction: row;
   text-align: justify;
-  /* border: 1px solid #ff0000; */
   width: 70%;
   height: auto;
 }

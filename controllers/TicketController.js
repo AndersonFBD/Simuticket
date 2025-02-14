@@ -58,7 +58,6 @@ exports.getAllFromEvent = async (req, res) => {
 exports.getTicket = async (req, res) => {
   try {
     const ticket = await Tmodel.getTicket(req.params.id);
-    console.log(ticket);
     if (!ticket) {
       return res.status(404).render("error", {
         code: 404,
@@ -82,7 +81,6 @@ exports.addTicket = async (req, res) => {
       code: 404,
       message: "A categoria de bilhete procurada não pôde ser encontrada",
     });
-  console.log("tipo: " + type);
 
   if (Number(ticket.qty) > Number(type.vacancies))
     return res.status(400).render("error", {
@@ -98,8 +96,6 @@ exports.addTicket = async (req, res) => {
   ticket.EventAddress = event.EventAddress;
   ticket.type = type.typeName;
   ticket.price = type.price;
-
-  console.log("ticket: " + ticket);
   try {
     for (let i = 0; i < Number(ticket.qty); i++) {
       await Tmodel.save(

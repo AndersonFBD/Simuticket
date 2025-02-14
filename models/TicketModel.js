@@ -56,7 +56,6 @@ module.exports = {
   },
   getTicketsOfCustomer: async (customer) => {
     const tickets = await TicketModel.find({ customerID: customer }).lean();
-    console.log(tickets);
     return tickets;
   },
   getTicketsFromEvent: async (event) => {
