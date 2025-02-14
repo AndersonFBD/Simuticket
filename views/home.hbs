@@ -17,16 +17,9 @@
           <button class="button" onclick="window.location.href='/tickets/byUser/{{id}}'">Meus bilhetes</button>
         </section>
         {{#if admin}}
-        <div>
-          <h3>Gerenciamento:</h3>
-          <ul>
-            <li>
-              <a href="/users/addAdmin">Adicionar novo admin</a>
-            </li>
-            <li>
-              <a href="/events/addEvent">Adicionar um evento</a>
-            </li>
-          </ul>
+        <div class="admincontent">
+          <button class="button" onclick="window.location.href='/users/addAdmin'">Novo admin</button>
+          <button class="button" onclick="window.location.href='/events/addEvent'">Novo evento</button>
         </div>
         {{/if}}
       {{else}}
