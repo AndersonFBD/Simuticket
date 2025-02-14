@@ -2,36 +2,45 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="stylesheet" href="/css/form.css">
+    <title>Nova categoria</title>
   </head>
   <body>
-    <h1>form para adicionar tipo de ingresso</h1>
+    {{> header title = "adicionar novo tipo"}}
     <main>
-      <form action="/types/add/{{eventID}}" method="post">
-        <label for="name">Nome do tipo de ingresso:</label>
-        <input type="text" id="name" name="name" required /><br />
+      <form class="formcontainer" action="/types/add/{{eventID}}" method="post">
+    <h1 class="title">informe o tipo de ingresso</h1>
+        <div class="field">
+            <label class="title" for="name">Nome do tipo de ingresso:</label>
+            <input class="" type="text" id="name" name="name" required />
+        </div>
+        <div class="field">
 
-        <label for="price">Preço:</label>
-        <input
+        <label class="title" for="price">Preço:</label>
+        <input class=""
           type="number"
           id="price"
           name="price"
           min="1"
           step="0.01"
           required
-        /><br />
-
-        <label for="vacancies">Vagas:</label>
-        <input
+        />
+        </div>
+        <div class="field">
+        <label class="title" for="vacancies">Quantidade:</label>
+        <input class=""
           type="number"
           id="vacancies"
           name="vacancies"
           min="1"
           required
-        /><br />
-
-        <input type="submit" value="Salvar" />
+        />
+        </div>
+        <div class="buttonfield">
+        <input class="button" type="submit" value="Salvar" />
+        </div>
       </form>
+        <button class="cancelbutton" onclick="history.back()">Cancelar</button>
     </main>
   </body>
 </html>
