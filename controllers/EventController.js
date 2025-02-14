@@ -4,6 +4,16 @@ exports.createEvent = async (req, res) => {
   const { EventName, EventDescription, EventAddress, EventDate } = req.body;
 
   try {
+    if (
+      EventName == "" ||
+      EventDescription == "" ||
+      EventAddress == "" ||
+      EventDate == ""
+    )
+      return res
+        .status(400)
+        .render("error", { code: 400, message: "preencha todos os campos" });
+
     let event = await eModel.save(
       EventName,
       EventDescription,

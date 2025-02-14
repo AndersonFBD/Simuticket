@@ -1,0 +1,88 @@
+body {
+  display: flex;
+  flex-flow: column wrap;
+  background-color: #d9d9b0;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-content: space-center;
+  align-items: center;
+  height: 90%;
+}
+
+.formcontainer {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 20vw;
+  height: 60vh;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: rgb(255, 230, 230);
+  color: #3535ff;
+  border-radius: 15px;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  justify-content: space-around;
+  text-align: left;
+}
+.title {
+  font-size: 24px;
+  font-weight: 600;
+}
+.field input {
+  outline: none;
+  border-radius: 20px;
+  border: none;
+  background-color: #ffb6b6;
+  color: white;
+  margin-top: 5px;
+  font-size: 24px;
+  padding-left: 15px;
+}
+.field input:focus {
+  border-bottom: #3535ff 1px solid;
+}
+
+.buttonfield {
+  display: flex;
+  height: 15%;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+}
+.button {
+  width: 50%;
+  height: 60%;
+  background-color: #04c504;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: 600;
+}
+.button:hover {
+  cursor: pointer;
+  filter: brightness(90%);
+}
+
+.cancelbutton {
+  width: 7%;
+  height: 7%;
+  background-color: #dd0e0e;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: 600;
+}
+.cancelbutton:hover {
+  cursor: pointer;
+  filter: brightness(90%);
+}
