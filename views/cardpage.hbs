@@ -21,18 +21,24 @@
       {{#if type}}
         {{#each data}}
           <div
-            class="event"
+            class="type"
           >
-            <h3>{{typeName}}</h3>
-            <h5>disponível: {{vacancies}}</h5>
-            <p>valor: {{price}}</p>
+            <p class="typename">{{typeName}}</p>
+            <p class="available">disponível: {{vacancies}}</p>
+            <p class="price">valor: {{price}}</p>
             <div>
               {{> addTicket type=_id max=vacancies}}
             </div>
-            <button onclick="location.href='/types/edit/{{_id}}'">editar</button>
-            <form action="/types/delete/{{_id}}" method="post">
-            <input type="submit" value="remover">
-            </form>
+            <div class="adminArea">
+              <div>
+                <button class="editar" onclick="location.href='/types/edit/{{_id}}'">editar</button>
+              </div>
+              <div>
+                <form  action="/types/delete/{{_id}}" method="post">
+                <input class="remover" type="submit" value="remover">
+              </form>
+              </div>
+            </div>
           </div>
         {{/each}}
       {{/if}}
@@ -50,11 +56,11 @@
       {{#if type}}
         {{#each data}}
           <div
-            class="event"
+            class="type"
           >
-            <h3>{{typeName}}</h3>
-            <h5>disponível: {{vacancies}}</h5>
-            <p>valor: {{price}}</p>
+            <p class="typename">{{typeName}}</p>
+            <p class="available">disponível: {{vacancies}}</p>
+            <p class="price">valor: {{price}}</p>
             <div>
               {{> addTicket type=_id max=vacancies}}
             </div>
