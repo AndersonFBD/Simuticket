@@ -14,14 +14,11 @@ exports.createUser = async (req, res) => {
   };
   const existingUser = await uModel.getUserbyName(createdUser.username);
   if (existingUser.length > 0) {
-    console.log(existingUser);
     return res
       .status(409)
       .render("error", { code: 409, message: "Este usuario já existe" });
   }
   try {
-    console.log(req.body);
-
     let user = await uModel.save(
       createdUser.username,
       createdUser.password,
@@ -39,7 +36,6 @@ exports.createUser = async (req, res) => {
 exports.getUser = async (req, res) => {
   try {
     user = await uModel.getUserbyName(req.body.username);
-    console.log(user);
     if (!user)
       return res
         .status(404)

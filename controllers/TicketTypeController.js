@@ -8,7 +8,6 @@ exports.listFromEvent = async (req, res) => {
     });
   try {
     let types = await TTModel.listFromEvent(req.params.eventID);
-    console.log(req.admin);
     if (types.length == 0) {
       return res.status(404).render("error", {
         code: 404,
