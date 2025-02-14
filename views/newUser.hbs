@@ -19,8 +19,10 @@
           <input type="password" name="password" id="password" /><br /><br />
         </div>
         {{#if admAccess}}
-          <input type="checkbox" name="admin" id="admin" />
-          <label for="admin">conta administrativa</label><br /><br />
+        <div class="checkfield">
+          <input class="check" type="checkbox" name="admin" id="admin" />
+          <label class="title" for="admin">conta administrativa</label>
+        </div>
         {{/if}}
         <div class="buttonfield">
           <input class="button" type="submit" value="criar conta" />

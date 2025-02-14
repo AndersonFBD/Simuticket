@@ -72,3 +72,18 @@ main {
   align-items: flex-end;
   height: 15%;
 }
+
+.checkfield {
+  display: flex;
+  width: 75%;
+  justify-content: space-evenly;
+  margin-bottom: 8px;
+}
+
+.check {
+  cursor: pointer;
+  height: 20px;
+  width: 20px;
+  font-size: 20px;
+  align-self: baseline;
+}
