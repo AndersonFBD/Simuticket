@@ -9,12 +9,10 @@ exports.listFromEvent = async (req, res) => {
   try {
     let types = await TTModel.listFromEvent(req.params.eventID);
     if (types.length == 0) {
-      return res
-        .status(404)
-        .render("error", {
-          code: 404,
-          message: "não há ingressos disponíveis",
-        });
+      return res.status(404).render("error", {
+        code: 404,
+        message: "não há ingressos disponíveis",
+      });
       // .json({ message: "nenhum tipo cadastrado" });
     }
     return res.status(200).render("cardpage", { data: types, type: true });
@@ -56,12 +54,18 @@ exports.addType = async (req, res) => {
     });
 
   try {
+    if (type.name == "" || type.price == "" || type.vacancies == "")
+      return res
+        .status(400)
+        .render("error", { code: 400, message: "preencha todos os campos" });
+
     let newType = await TTModel.save(
       event,
       type.name,
       Number(type.price).toFixed(2),
       type.vacancies
     );
+
     return res.status(201).render("success", { tipo: true });
   } catch (err) {
     console.error(err);

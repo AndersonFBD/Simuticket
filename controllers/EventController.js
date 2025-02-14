@@ -3,7 +3,23 @@ const eModel = require("../models/EventModel");
 exports.createEvent = async (req, res) => {
   const { EventName, EventDescription, EventAddress, EventDate } = req.body;
 
+  if (!req.admin)
+    return res.status(403).render("error", {
+      code: 403,
+      message: "disponível apenas para administradoes",
+    });
+
   try {
+    if (
+      EventName == "" ||
+      EventDescription == "" ||
+      EventAddress == "" ||
+      EventDate == ""
+    )
+      return res
+        .status(400)
+        .render("error", { code: 400, message: "preencha todos os campos" });
+
     let event = await eModel.save(
       EventName,
       EventDescription,

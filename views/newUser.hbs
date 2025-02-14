@@ -3,28 +3,36 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Criar uma conta</title>
+    <link rel="stylesheet" href="/css/newaccount.css">
   </head>
   <body>
+    {{> header title = "criar uma conta"}}
     <main>
-      <form action="/users/create" method="post">
-        <h3>crie a sua conta</h3>
-        <label for="username">nome de usuario: </label><br />
-        <input type="text" name="username" id="username" /><br /><br />
-        <label for="password">senha:</label><br />
-        <input type="password" name="password" id="password" /><br /><br />
+      <form class="formcontainer" action="/users/create" method="post">
+        <h3 class="title">crie a sua conta</h3>
+        <div class="field">
+          <label class="title" for="username">nome de usuario: </label><br />
+          <input type="text" name="username" id="username" /><br /><br />
+        </div>
+        <div class="field">
+          <label class="title" for="password">senha:</label><br />
+          <input type="password" name="password" id="password" /><br /><br />
+        </div>
         {{#if admAccess}}
-          <input type="checkbox" name="admin" id="admin" />
-          <label for="admin">conta administrativa</label><br /><br />
+        <div class="checkfield">
+          <input class="check" type="checkbox" name="admin" id="admin" />
+          <label class="title" for="admin">conta administrativa</label>
+        </div>
         {{/if}}
-        <input type="submit" value="criar conta" />
+        <div class="buttonfield">
+          <input class="button" type="submit" value="criar conta" />
+        </div>
       </form>
       <br /><br />
       <p>
         possui uma conta?
-        <a href="/auth/login"> Fazer login</a>
+        <a href="/"> Fazer login</a>
       </p>
-      <br /><br />
-      <a href="/">home</a>
     </main>
   </body>
 </html>

@@ -7,9 +7,10 @@
   20px; border: none; background-color: #ffb6b6; color: white; margin-top: 5px;
   font-size: 18px; padding-left: 15px;} .field input:focus{ border-bottom:
   #3535ff 1px solid; } .field label{ font-size: 18px; font-weight: 600; }
-  .button { background-color: #04c504; color: white; border: none;
-  border-radius: 20px; font-size: 18px; font-weight: 600;} .button:hover {
-  cursor: pointer; filter: brightness(90%);}
+  .button { width: 50%; height: 100%; background-color: #04c504; color: white;
+  border: none; border-radius: 20px; font-size: 18px; font-weight: 600;}
+  .button:hover { cursor: pointer; filter: brightness(90%);} .buttonfield{
+  align-items: flex-end; height: 15%;}
 </style>
 <form class="loginform" action="/auth/login" method="post">
   <div class="field">
@@ -20,7 +21,7 @@
     <label for="password">senha:</label>
     <input type="password" name="password" id="password" />
   </div>
-  <div class="field">
+  <div class="field buttonfield">
     <button class="button" type="submit">Login</button>
   </div>
 </form>
