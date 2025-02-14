@@ -30,6 +30,9 @@
               {{> addTicket type=_id max=vacancies}}
             </div>
             <button onclick="location.href='/types/edit/{{_id}}'">editar</button>
+            <form action="/types/delete/{{_id}}" method="post">
+            <input type="submit" value="remover">
+            </form>
           </div>
         {{/each}}
       {{/if}}

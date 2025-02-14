@@ -87,7 +87,6 @@ exports.addType = async (req, res) => {
 exports.editType = async (req, res) => {
   const editedType = req.body;
   const typeID = req.params.id;
-
   try {
     if (
       editedType.name == "" ||
@@ -110,11 +109,17 @@ exports.editType = async (req, res) => {
   }
 };
 
-exports.deleteEvent = async (req, res) => {
+exports.deleteType = async (req, res) => {
+  if (!req.admin) {
+    return res
+      .status(403)
+      .render("error", { code: 403, message: "acesso negado" });
+  }
   try {
     let typeId = req.params.typeId;
     let deletedtype = await TTModel.delete(typeId);
-    return res.status(200).json({ message: "tipo removido", deletedtype });
+    return res.status(200).render("success", { typeDelete: true });
+    // .json({ message: "tipo removido", deletedtype });
   } catch (err) {
     console.error(err);
     return res.status(500).render("error", {

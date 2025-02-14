@@ -14,9 +14,14 @@
       {{/if}}
       {{#if tipo}}
         <h1 class="mensagem">categoria adicionada com sucesso ao evento</h1>
+        <a class="link" href="/events/">voltar para eventos</a>
       {{/if}}
       {{#if typeEdit}}
         <h1 class="mensagem">categoria alterada com sucesso</h1>
+        <a class="link" href="/events/">voltar para eventos</a>
+      {{/if}}
+      {{#if typeDelete}}
+        <h1 class="mensagem">categoria removida com sucesso</h1>
         <a class="link" href="/events/">voltar para eventos</a>
       {{/if}}
       {{#if bilhete}}

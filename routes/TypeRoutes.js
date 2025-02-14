@@ -21,5 +21,6 @@ router.get("/edit/:id", verifyCredentials, async (req, res) => {
       .render("error", { code: 403, message: "acesso negado" });
 });
 router.post("/edit/:id", verifyCredentials, ttController.editType);
+router.post("/delete/:typeId", verifyCredentials, ttController.deleteType);
 
 module.exports = router;
