@@ -11,18 +11,13 @@
     </header>
     <main>
       {{#if name}}
-        <section>
-          <p>
-            Bem vindo de volta
-            {{name}}
-          </p><br /><br />
-          <a href="/events/">Eventos</a><br />
-          <a href="/tickets/byUser/{{id}}">meus bilhetes</a>
-          <form action="/auth/logout" method="post">
-            <input type="submit" value="SAIR" />
-          </form>
+        <section class="maincontent">
+          <p class="welcome">Bem vindo de volta {{name}}!</p>
+          <button class="button" onclick="window.location.href='/events/'">Eventos</button>
+          <button class="button" onclick="window.location.href='/tickets/byUser/{{id}}'">Meus bilhetes</button>
         </section>
         {{#if admin}}
+        <div>
           <h3>Gerenciamento:</h3>
           <ul>
             <li>
@@ -31,16 +26,14 @@
             <li>
               <a href="/events/addEvent">Adicionar um evento</a>
             </li>
-            <li>
-              <a href="#">gerenciar usuários</a>
-            </li>
           </ul>
+        </div>
         {{/if}}
       {{else}}
         {{#if expiry}}
           <p>Sua sessão expirou</p><br /><br />
         {{/if}}
-        <p>
+        <p class="welcome">
           Bem vindo, faça login para prosseguir:
         </p>
         {{> login}}

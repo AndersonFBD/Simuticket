@@ -29,3 +29,34 @@ footer {
   font-size: 14px;
   font-weight: 500;
 }
+
+.maincontent {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 50vw;
+  height: 50vh;
+  align-items: center;
+  justify-content: space-around;
+  background-color: white;
+}
+
+.welcome {
+  font-size: 24pt;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+
+.button {
+  background-color: #39ff99;
+  border-radius: 20px;
+  width: 30%;
+  padding: 1% 0;
+  font-size: 24pt;
+  font-weight: 600;
+  border: none;
+}
+
+.button:hover {
+  filter: brightness(90%);
+  cursor: pointer;
+}
