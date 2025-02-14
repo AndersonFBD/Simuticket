@@ -8,28 +8,54 @@
   <body>
     {{> header title = "Adicionar evento"}}
     <main>
-      <form class="formcontainer" action="/events/addEvent" method="post">
-      <h1 class="title">Adicione um novo evento:</h1>
-        <div class="field">
-          <label class="title" for="EventName">Nome do Evento: </label>
-        <input type="text" name="EventName" id="EventName" />
-        </div>
-        <div class="field">
-          <label class="title" for="EventDescription">Descrição: </label>
-        <input type="text" name="EventDescription" id="EventDescription" />
-        </div>
-        <div class="field">
-        <label class="title" for="EventAddress">Endereço: </label>
-        <input type="text" name="EventAddress" id="EventAddress" />
-        </div>
-        <div class="field">
-        <label class="title" for="EventDate">Data: </label>
-        <input type="date" name="EventDate" id="EventDate" /> 
-        </div>
-        <div class="buttonfield">
-        <input class="button" type="submit" value="Salvar" />
-        </div>        
-      </form>
+      {{#if new}}
+          <form class="formcontainer" action="/events/addEvent" method="post">
+          <h1 class="title">Adicione um novo evento:</h1>
+            <div class="field">
+              <label class="title" for="EventName">Nome do Evento: </label>
+            <input type="text" name="EventName" id="EventName" />
+            </div>
+            <div class="field">
+              <label class="title" for="EventDescription">Descrição: </label>
+            <input type="text" name="EventDescription" id="EventDescription" />
+            </div>
+            <div class="field">
+            <label class="title" for="EventAddress">Endereço: </label>
+            <input type="text" name="EventAddress" id="EventAddress" />
+            </div>
+            <div class="field">
+            <label class="title" for="EventDate">Data: </label>
+            <input type="date" name="EventDate" id="EventDate" /> 
+            </div>
+            <div class="buttonfield">
+            <input class="button" type="submit" value="Salvar" />
+            </div>        
+          </form>
+      {{/if}}
+        {{#if edit}}
+          <form class="formcontainer" action="/events/edit/{{data._id}}" method="post">
+          <h1 class="title">Atualizar evento:</h1>
+            <div class="field">
+              <label class="title" for="EventName">Nome do Evento: </label>
+            <input type="text" name="EventName" id="EventName" value="{{data.EventName}}"/>
+            </div>
+            <div class="field">
+              <label class="title" for="EventDescription">Descrição: </label>
+            <input type="text" name="EventDescription" id="EventDescription" value="{{data.EventDescription}}"/>
+            </div>
+            <div class="field">
+            <label class="title" for="EventAddress">Endereço: </label>
+            <input type="text" name="EventAddress" id="EventAddress" value="{{data.EventAddress}}"/>
+            </div>
+            <div class="field">
+            <label class="title" for="EventDate">Data: </label>
+            <input type="date" name="EventDate" id="EventDate"  value="{{data.EventDate}}"/> 
+            </div>
+            <div class="buttonfield">
+            <input class="button" type="submit" value="Salvar" />
+            </div>        
+          </form>
+      {{/if}}
         <button class="cancelbutton" onclick="history.back()">Cancelar</button>
     </main>
   </body>

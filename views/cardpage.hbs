@@ -8,24 +8,11 @@
   <body>
     {{> header title = "selecione o evento"}}
     <main class="content">
-      {{!-- <section class="topBar">
-        <a href="/">Home</a>
-        {{#if event}}
-          <h1>Escolha o Evento</h1>
-        {{/if}}
-        {{#if type}}
-          <h1>Selecione o tipo de ingresso:</h1>
-        {{/if}}
-        <form action="/auth/logout" method="post">
-          <input type="submit" value="SAIR" />
-        </form>
-      </section> --}}
-
+    {{#if admin}}
       {{#if event}}
         {{#each data}}
           <div class="event" onclick="location.href='/events/{{_id}}'">
             <h3>nome: {{EventName}}</h3>
-            {{!-- <p>Descrição: {{EventDescription}}</p> --}}
             <h5>Local: {{EventAddress}}</h5>
             <p>Data: {{EventDate}}</p>
           </div>
@@ -34,17 +21,53 @@
       {{#if type}}
         {{#each data}}
           <div
-            class="event"
+            class="type"
           >
-            <h3>{{typeName}}</h3>
-            <h5>disponível: {{vacancies}}</h5>
-            <p>valor: {{price}}</p>
+            <p class="typename">{{typeName}}</p>
+            <p class="available">disponível: {{vacancies}}</p>
+            <p class="price">valor: {{price}}</p>
+            <div>
+              {{> addTicket type=_id max=vacancies}}
+            </div>
+            <div class="adminArea">
+              <div>
+                <button class="editar" onclick="location.href='/types/edit/{{_id}}'">editar</button>
+              </div>
+              <div>
+                <form  action="/types/delete/{{_id}}" method="post">
+                <input class="remover" type="submit" value="remover">
+              </form>
+              </div>
+            </div>
+          </div>
+        {{/each}}
+      {{/if}}
+    {{/if}}
+    {{#if user}}
+      {{#if event}}
+        {{#each data}}
+          <div class="event" onclick="location.href='/events/{{_id}}'">
+            <h3>nome: {{EventName}}</h3>
+            <h5>Local: {{EventAddress}}</h5>
+            <p>Data: {{EventDate}}</p>
+          </div>
+        {{/each}}
+      {{/if}}
+      {{#if type}}
+        {{#each data}}
+          <div
+            class="type"
+          >
+            <p class="typename">{{typeName}}</p>
+            <p class="available">disponível: {{vacancies}}</p>
+            <p class="price">valor: {{price}}</p>
             <div>
               {{> addTicket type=_id max=vacancies}}
             </div>
           </div>
         {{/each}}
       {{/if}}
+    {{/if}}
     </main>
   </body>
 </html>

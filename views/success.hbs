@@ -10,10 +10,28 @@
     <main>
       {{#if evento}}
         <h1 class="mensagem">Evento adicionado com sucesso</h1>
+        <p class="mensagem">vá para a página do evento para alocar ingressos</p>
         <a class="link" href="/events/">ver eventos</a>
+      {{/if}}
+      {{#if eventEdit}}
+        <h1 class="mensagem">evento atualizado com sucesso</h1>
+        <a class="link" href="/events/">voltar para eventos</a>
+      {{/if}}      
+      {{#if eventDelete}}
+        <h1 class="mensagem">evento removido com sucesso</h1>
+        <a class="link" href="/events/">voltar para eventos</a>
       {{/if}}
       {{#if tipo}}
         <h1 class="mensagem">categoria adicionada com sucesso ao evento</h1>
+        <a class="link" href="/events/">voltar para eventos</a>
+      {{/if}}
+      {{#if typeEdit}}
+        <h1 class="mensagem">categoria alterada com sucesso</h1>
+        <a class="link" href="/events/">voltar para eventos</a>
+      {{/if}}
+      {{#if typeDelete}}
+        <h1 class="mensagem">categoria removida com sucesso</h1>
+        <a class="link" href="/events/">voltar para eventos</a>
       {{/if}}
       {{#if bilhete}}
         <h1 class="mensagem">Bilhete emitido com sucesso</h1>

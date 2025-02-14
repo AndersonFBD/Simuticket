@@ -58,6 +58,13 @@
           class="buttons add"
           onclick="window.location.href='/types/add/{{data._id}}'"
         >adicionar tipo de ingresso</button>
+        <button
+          class="buttons add"
+          onclick="window.location.href='/events/edit/{{data._id}}'"
+        >editar evento</button>
+        <form class="buttons back" action="/events/delete/{{data._id}}" method="post">
+          <input class="buttons back" type="submit" value="excluir">
+        </form>
       {{/if}}
       <button
           class="buttons buy"

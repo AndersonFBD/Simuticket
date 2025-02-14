@@ -48,3 +48,62 @@ main {
   background-color: #acacac;
   color: #4f0671;
 }
+
+.type {
+  margin-top: 10px;
+  display: flex;
+  width: 20vw;
+  height: fit-content;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: rgb(207, 201, 201);
+  padding: 1%;
+  text-align: left;
+  border: #99838a 1px solid;
+  border-radius: 20px;
+}
+
+.adminArea {
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+}
+
+.typename {
+  font-size: 32px;
+  font-weight: 800;
+}
+
+.available {
+  font-size: 24px;
+}
+
+.price {
+  font-size: 24px;
+}
+
+.editar {
+  font-size: 24px;
+  background-color: blue;
+  color: white;
+  border-radius: 8px;
+  padding: 0 15%;
+}
+
+.editar:hover {
+  cursor: pointer;
+  filter: brightness(90%);
+}
+
+.remover {
+  font-size: 24px;
+  background-color: rgb(255, 89, 0);
+  color: white;
+  border-radius: 8px;
+  padding: 0 15%;
+}
+
+.remover:hover {
+  cursor: pointer;
+  filter: brightness(90%);
+}

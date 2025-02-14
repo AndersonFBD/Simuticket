@@ -1,5 +1,12 @@
+<style>
+  form { display: flex; justify-content: space-between;} form label {font-size:
+  24px;} .button { font-size: 24px; border-radius: 8px; color: white;
+  background-color: #619d61;} .button:hover {filter: brightness(90%); cursor:
+  pointer;}
+</style>
+
 <form action="/tickets/purchase/{{type}}" method="post">
-  <label for="qty">quantidade:</label>
+  <label for="qty">bilhetes:</label>
   <input type="number" name="qty" id="qty" min="1" max="{{max}}" required />
-  <input type="submit" value="realizar o pedido" />
+  <input class="button" type="submit" value="comprar" />
 </form>

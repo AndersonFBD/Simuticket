@@ -8,6 +8,7 @@ exports.listFromEvent = async (req, res) => {
     });
   try {
     let types = await TTModel.listFromEvent(req.params.eventID);
+    console.log(req.admin);
     if (types.length == 0) {
       return res.status(404).render("error", {
         code: 404,
@@ -15,7 +16,14 @@ exports.listFromEvent = async (req, res) => {
       });
       // .json({ message: "nenhum tipo cadastrado" });
     }
-    return res.status(200).render("cardpage", { data: types, type: true });
+    if (req.admin)
+      return res
+        .status(200)
+        .render("cardpage", { data: types, type: true, admin: true });
+    else
+      return res
+        .status(200)
+        .render("cardpage", { data: types, type: true, user: true });
     // .json(types);
   } catch (err) {
     console.error(err);
@@ -79,11 +87,19 @@ exports.addType = async (req, res) => {
 exports.editType = async (req, res) => {
   const editedType = req.body;
   const typeID = req.params.id;
-
   try {
+    if (
+      editedType.name == "" ||
+      editedType.price == "" ||
+      editedType.vacancies == ""
+    )
+      return res
+        .status(400)
+        .render("error", { code: 400, message: "preencha todos os campos" });
+
     const type = await TTModel.update(typeID, editedType);
-    if (type)
-      return res.status(200).json({ status: "succes", altered_type: type });
+    if (type) return res.status(200).render("success", { typeEdit: true });
+    // json({ status: "succes", altered_type: type });
   } catch (err) {
     console.error(err);
     return res.status(500).render("error", {
@@ -93,11 +109,17 @@ exports.editType = async (req, res) => {
   }
 };
 
-exports.deleteEvent = async (req, res) => {
+exports.deleteType = async (req, res) => {
+  if (!req.admin) {
+    return res
+      .status(403)
+      .render("error", { code: 403, message: "acesso negado" });
+  }
   try {
     let typeId = req.params.typeId;
     let deletedtype = await TTModel.delete(typeId);
-    return res.status(200).json({ message: "tipo removido", deletedtype });
+    return res.status(200).render("success", { typeDelete: true });
+    // .json({ message: "tipo removido", deletedtype });
   } catch (err) {
     console.error(err);
     return res.status(500).render("error", {

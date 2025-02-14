@@ -62,7 +62,15 @@ exports.getEvent = async (req, res) => {
 exports.listEvents = async (req, res) => {
   try {
     let eventList = await eModel.list();
-    return res.status(200).render("cardpage", { data: eventList, event: true });
+    if (res.admin)
+      return res
+        .status(200)
+        .render("cardpage", { data: eventList, event: true, admin: true });
+    else
+      return res
+        .status(200)
+        .render("cardpage", { data: eventList, event: true, user: true });
+
     // json(eventList);
   } catch (error) {
     console.error(error);
@@ -74,11 +82,16 @@ exports.listEvents = async (req, res) => {
 };
 
 exports.updateEvent = async (req, res) => {
+  if (!req.admin)
+    return res
+      .status(403)
+      .render("error", { code: 403, message: "sem autorização" });
   try {
     let eventId = req.params.id;
     let alteredEvent = req.body;
     let updatedEvent = await eModel.update(eventId, alteredEvent);
-    return res.status(200).json({ message: "evento atualizado", updatedEvent });
+    return res.status(200).render("success", { eventEdit: true });
+    // .json({ message: "evento atualizado", updatedEvent });
   } catch (error) {
     console.error(error);
     return res.status(500).render("error", {
@@ -89,10 +102,13 @@ exports.updateEvent = async (req, res) => {
 };
 
 exports.deleteEvent = async (req, res) => {
+  if (!req.admin)
+    return res
+      .status(403)
+      .render("error", { code: 403, message: "sem autorização" });
   try {
-    let eventId = req.body.eventId;
-    let deletedEvent = await eModel.delete(eventId);
-    return res.status(200).json({ message: "evento removido", deletedEvent });
+    let deletedEvent = await eModel.delete(req.params.id);
+    return res.status(200).render("success", { eventDelete: true });
   } catch (error) {
     console.error(error);
     return res.status(500).render("error", {
