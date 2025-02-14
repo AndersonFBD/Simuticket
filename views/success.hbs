@@ -2,24 +2,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/confirmation.css" />
     <title>Sucesso</title>
   </head>
   <body>
+    {{> header title = "Sucesso"}}
     <main>
       {{#if evento}}
-        <h1>Evento adicionado com sucesso</h1>
+        <h1 class="mensagem">Evento adicionado com sucesso</h1>
+        <a class="link" href="/events/">ver eventos</a>
       {{/if}}
       {{#if tipo}}
-        <h1>categoria adicionada com sucesso ao evento</h1>
+        <h1 class="mensagem">categoria adicionada com sucesso ao evento</h1>
       {{/if}}
       {{#if bilhete}}
-        <h1>Bilhete emitido com sucesso</h1>
+        <h1 class="mensagem">Bilhete emitido com sucesso</h1>
+        <a class="link" href="/events/">ver outros eventos</a>
       {{/if}}
       {{#if usuario}}
-        <h1>usuario cadastrado</h1>
+        <h1 class="mensagem">usuario cadastrado</h1>
       {{/if}}
       <br /><br />
-      <a href="/">retornar para a página principal</a>
+      <a class="link" href="javascript:history.back()">voltar</a><br>
+      <a class="link" href="/">retornar para Home</a>
     </main>
   </body>
 </html>

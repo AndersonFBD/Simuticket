@@ -1,0 +1,28 @@
+body {
+  display: flex;
+  flex-flow: column wrap;
+  background-color: #d9d9b0;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  height: 70%;
+}
+
+.codigo {
+  font-family: Impact;
+  font-size: 64pt;
+}
+
+.mensagem {
+  font-family: Arial;
+  font-size: 32pt;
+}
+
+.link {
+  font-size: 24pt;
+}

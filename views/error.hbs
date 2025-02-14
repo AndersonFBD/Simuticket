@@ -2,22 +2,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Error</title>
+    <link rel="stylesheet" href="/css/confirmation.css">
+    <title>Erro</title>
   </head>
   <body>
+    {{> header title = "erro"}}
     <main>
       <section>
-        <h1>
-          ERRO
+        <p class="codigo">
           {{code}}
-        </h1>
-      </section>
-      <section>
-        <h3>
+        </p>
+        <p class="mensagem">
           {{message}}
-        </h3>
+        </p>
         <p>
-          <a href="javascript:history.back()">voltar</a>
+          <a class="link" href="javascript:history.back()">voltar</a>
         </p>
       </section>
     </main>
