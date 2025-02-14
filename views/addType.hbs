@@ -8,8 +8,9 @@
   <body>
     {{> header title = "adicionar novo tipo"}}
     <main>
+    {{#if new}}
       <form class="formcontainer" action="/types/add/{{eventID}}" method="post">
-    <h1 class="title">informe o tipo de ingresso</h1>
+        <h1 class="title">informe o tipo de ingresso</h1>
         <div class="field">
             <label class="title" for="name">Nome do tipo de ingresso:</label>
             <input class="" type="text" id="name" name="name" required />
@@ -40,6 +41,43 @@
         <input class="button" type="submit" value="Salvar" />
         </div>
       </form>
+      {{/if}}
+      {{#if edit}}
+      <form class="formcontainer" action="/types/edit/{{data._id}}" method="post">
+        <h1 class="title">informe o tipo de ingresso</h1>
+        <div class="field">
+            <label class="title" for="name">Nome do tipo de ingresso:</label>
+            <input class="" type="text" id="name" name="name" value="{{data.typeName}}" required />
+        </div>
+        <div class="field">
+
+        <label class="title" for="price">Preço:</label>
+        <input class=""
+          type="number"
+          id="price"
+          name="price"
+          min="1"
+          step="0.01"
+          value="{{data.price}}"
+          required
+        />
+        </div>
+        <div class="field">
+        <label class="title" for="vacancies">Quantidade:</label>
+        <input class=""
+          type="number"
+          id="vacancies"
+          name="vacancies"
+          min="1"
+          value="{{data.vacancies}}"
+          required
+        />
+        </div>
+        <div class="buttonfield">
+        <input class="button" type="submit" value="Salvar" />
+        </div>
+      </form>
+      {{/if}}
         <button class="cancelbutton" onclick="history.back()">Cancelar</button>
     </main>
   </body>
