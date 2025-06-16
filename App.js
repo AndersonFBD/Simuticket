@@ -17,7 +17,7 @@ const typeRoutes = require("./routes/TypeRoutes");
 const authRoutes = require("./routes/AuthRoutes");
 
 //utilitários
-app.use(Express.static("public"));
+app.use(Express.static(path.join(__dirname, "public")));
 app.engine(
   "hbs",
   engine({
@@ -60,6 +60,8 @@ app.use("/events", eventRoutes);
 app.use("/tickets", ticketRoutes);
 app.use("/types", typeRoutes);
 
-app.listen(port, () => {
-  console.log("listening on port: " + port);
-});
+// app.listen(port, () => {
+//   console.log("listening on port: " + port);
+// });
+
+module.exports = app;
